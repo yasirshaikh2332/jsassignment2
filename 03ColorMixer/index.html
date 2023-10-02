@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Color Mixer</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+
+    #container {
+      margin-top: 50px;
+    }
+
+    select {
+      padding: 10px;
+      font-size: 16px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+
+    #result {
+      margin-top: 20px;
+      font-size: 24px;
+    }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <h1>Color Mixer</h1>
+    <label for="color1">Color 1:</label>
+    <select id="color1">
+      <option value="red">Red</option>
+      <option value="blue">Blue</option>
+      <option value="yellow">Yellow</option>
+      <option value="green">Green</option>
+      <option value="purple">Purple</option>
+      <option value="orange">Orange</option>
+    </select>
+
+    <label for="color2">Color 2:</label>
+    <select id="color2">
+      <option value="red">Red</option>
+      <option value="blue">Blue</option>
+      <option value="yellow">Yellow</option>
+      <option value="green">Green</option>
+      <option value="purple">Purple</option>
+      <option value="orange">Orange</option>
+    </select>
+
+    <button onclick="mixColors()">Mix Colors</button>
+    
+    <div id="result"></div>
+  </div>
+
+  <script>
+    function mixColors() {
+      const color1 = document.getElementById("color1").value;
+      const color2 = document.getElementById("color2").value;
+      const resultDiv = document.getElementById("result");
+
+      switch (color1.toLowerCase()) {
+        case "red":
+          switch (color2.toLowerCase()) {
+            case "blue":
+              resultDiv.textContent = "Resulting Color: Purple";
+              break;
+            case "yellow":
+              resultDiv.textContent = "Resulting Color: Orange";
+              break;
+            default:
+              resultDiv.textContent = "Invalid color combination";
+          }
+          break;
+        case "blue":
+          switch (color2.toLowerCase()) {
+            case "red":
+              resultDiv.textContent = "Resulting Color: Purple";
+              break;
+            case "yellow":
+              resultDiv.textContent = "Resulting Color: Green";
+              break;
+            default:
+              resultDiv.textContent = "Invalid color combination";
+          }
+          break;
+        case "yellow":
+          switch (color2.toLowerCase()) {
+            case "red":
+              resultDiv.textContent = "Resulting Color: Orange";
+              break;
+            case "blue":
+              resultDiv.textContent = "Resulting Color: Green";
+              break;
+            default:
+              resultDiv.textContent = "Invalid color combination";
+          }
+          break;
+        default:
+          resultDiv.textContent = "Invalid color combination";
+      }
+    }
+  </script>
+</body>
+</html>

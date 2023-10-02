@@ -1,0 +1,27 @@
+body{
+  background-image: url("https://cdn.hipwallpaper.com/i/34/81/ltPquX.jpg");
+}
+h1{
+  text-align: center;
+}
+#input{
+    display: flex;
+    justify-content: center;
+}
+#container{
+  display: flex;
+  justify-content:center;
+}
+
+button{
+  width:40px;
+  border: red solid;
+}
+/* bad me karta hun */
+#color{
+  background-color: #6969dd;
+  padding-bottom: 10px;
+  padding-right: 1px;
+  border: 2px solid black;
+  border-radius:20px ;
+}

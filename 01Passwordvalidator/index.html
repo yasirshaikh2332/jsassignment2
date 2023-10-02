@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Password Validator</title>
+</head>
+<body>
+    <h1>Password Validator</h1>
+    <label for="password">Enter a password:</label>
+    <input type="password" id="password" onkeyup="validatePassword()">
+    <p id="message"></p>
+
+    <script>
+        function validatePassword() {
+            const passwordInput = document.getElementById('password');
+            const message = document.getElementById('message');
+            const password = passwordInput.value;
+
+            // Define your password validation rules here
+            const minLength = 8;
+            const hasUpperCase = /[A-Z]/.test(password);
+            const hasLowerCase = /[a-z]/.test(password);
+            const hasNumbers = /\d/.test(password);
+            const hasSpecialChars = /[!@#$%^&*()_+{}\[\]:;<>,.?~\\-]/.test(password);
+
+            let isValid = true;
+            let errorMessage = "";
+
+            if (password.length < minLength) {
+                errorMessage += "Password must be at least 8 characters long.<br>";
+                isValid = false;
+            }
+
+            if (!hasUpperCase) {
+                errorMessage += "Password must contain at least one uppercase letter.<br>";
+                isValid = false;
+            }
+
+            if (!hasLowerCase) {
+                errorMessage += "Password must contain at least one lowercase letter.<br>";
+                isValid = false;
+            }
+
+            if (!hasNumbers) {
+                errorMessage += "Password must contain at least one number.<br>";
+                isValid = false;
+            }
+
+            if (!hasSpecialChars) {
+                errorMessage += "Password must contain at least one special character.<br>";
+                isValid = false;
+            }
+
+            message.innerHTML = errorMessage;
+
+            if (isValid) {
+                message.style.color = 'green';
+                message.textContent = 'Password is valid!';
+            } else {
+                message.style.color = 'red';
+            }
+        }
+    </script>
+</body>
+</html>

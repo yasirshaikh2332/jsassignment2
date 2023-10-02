@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dynamic List Items</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 20px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+
+    #list {
+      margin-top: 20px;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+  <h1>What you'll learn</h1>
+  <button onclick="addItem()">Add Item</button>
+  <ol id="list"></ol>
+
+  <script>
+    const itemList = [
+      "Item 1: Introduction",
+      "Item 2: Basic Concepts",
+      "Item 3: Advanced Topics",
+      // Add more items to the array as needed
+    ];
+
+    const list = document.getElementById("list");
+    let currentItemIndex = 0;
+
+    function addItem() {
+      if (currentItemIndex < itemList.length) {
+        const listItem = document.createElement("li");
+        listItem.textContent = itemList[currentItemIndex];
+        list.appendChild(listItem);
+        currentItemIndex++;
+      } else {
+        alert("All items have been added.");
+      }
+    }
+  </script>
+</body>
+</html>

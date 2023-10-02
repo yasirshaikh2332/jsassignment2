@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Text Highlighting</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 20px;
+    }
+
+    p {
+      font-size: 18px;
+    }
+
+    .highlight {
+      background-color: yellow;
+    }
+  </style>
+</head>
+<body>
+  <p id="text">
+    This is a sample paragraph with words of different lengths. Some words are longer than 8 characters and should be highlighted.
+  </p>
+
+  <script>
+    const paragraph = document.getElementById("text");
+    const words = paragraph.textContent.split(" ");
+
+    for (let i = 0; i < words.length; i++) {
+      if (words[i].length > 8) {
+        words[i] = `<span class="highlight">${words[i]}</span>`;
+      }
+    }
+
+    paragraph.innerHTML = words.join(" ");
+  </script>
+</body>
+</html>

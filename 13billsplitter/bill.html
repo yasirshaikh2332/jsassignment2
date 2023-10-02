@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bill Splitter</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 20px;
+    }
+
+    #container {
+      border: 1px solid #ccc;
+      padding: 20px;
+      width: 300px;
+      margin: 0 auto;
+    }
+
+    label {
+      font-size: 18px;
+    }
+
+    input {
+      padding: 10px;
+      font-size: 16px;
+      width: 100%;
+    }
+
+    button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+
+    #result {
+      margin-top: 20px;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <h1>Bill Splitter</h1>
+    <label for="costPerDish">Cost per dish:</label>
+    <input type="number" id="costPerDish" placeholder="Enter cost per dish">
+
+    <label for="numPeople">Number of people:</label>
+    <input type="number" id="numPeople" placeholder="Enter number of people">
+
+    <button onclick="calculateBill()">Calculate Bill</button>
+    
+    <div id="result"></div>
+  </div>
+
+  <script>
+    function calculateBill() {
+      const costPerDishInput = document.getElementById("costPerDish");
+      const numPeopleInput = document.getElementById("numPeople");
+      const resultDiv = document.getElementById("result");
+
+      const costPerDish = parseFloat(costPerDishInput.value);
+      const numPeople = parseInt(numPeopleInput.value);
+
+      if (isNaN(costPerDish) || isNaN(numPeople) || costPerDish <= 0 || numPeople <= 0) {
+        resultDiv.textContent = "Please enter valid values.";
+      } else {
+        const totalBill = costPerDish * numPeople;
+        const billPerPerson = totalBill / numPeople;
+
+        resultDiv.textContent = `Total Bill: $${totalBill.toFixed(2)}`;
+        resultDiv.textContent += `\nBill Per Person: $${billPerPerson.toFixed(2)}`;
+      }
+    }
+  </script>
+</body>
+</html>

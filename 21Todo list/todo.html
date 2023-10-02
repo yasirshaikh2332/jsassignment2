@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple To-Do App</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 20px;
+    }
+
+    h1 {
+      font-size: 24px;
+    }
+
+    input[type="text"] {
+      padding: 10px;
+      font-size: 16px;
+      width: 60%;
+      margin-right: 10px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    li {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .remove-button {
+      background-color: #ff0000;
+    }
+  </style>
+</head>
+<body>
+  <h1>Simple To-Do App</h1>
+  <input type="text" id="todoInput" placeholder="Enter a new task">
+  <button onclick="addTodo()">Add</button>
+
+  <ul id="todoList">
+  </ul>
+
+  <script>
+    function addTodo() {
+      const todoInput = document.getElementById("todoInput");
+      const todoList = document.getElementById("todoList");
+
+      const task = todoInput.value.trim();
+      if (task !== "") {
+        const listItem = document.createElement("li");
+        listItem.innerHTML = `
+          ${task}
+          <button class="remove-button" onclick="removeTodo(this)">Remove</button>
+        `;
+        todoList.appendChild(listItem);
+        todoInput.value = "";
+      }
+    }
+
+    function removeTodo(button) {
+      const listItem = button.parentElement;
+      const todoList = document.getElementById("todoList");
+      todoList.removeChild(listItem);
+    }
+  </script>
+</body>
+</html>

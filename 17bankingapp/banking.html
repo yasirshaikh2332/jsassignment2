@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple Banking Application</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 20px;
+    }
+
+    #container {
+      border: 1px solid #ccc;
+      padding: 20px;
+      width: 300px;
+      margin: 0 auto;
+    }
+
+    label {
+      font-size: 18px;
+    }
+
+    input {
+      padding: 10px;
+      font-size: 16px;
+      width: 100%;
+      margin-bottom: 10px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+
+    #result {
+      margin-top: 20px;
+      font-size: 24px;
+    }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <h1>Simple Banking Application</h1>
+    <label for="customerName">Customer Name:</label>
+    <input type="text" id="customerName" placeholder="Enter customer name">
+
+    <label for="balance">Initial Balance:</label>
+    <input type="number" id="balance" placeholder="Enter initial balance">
+
+    <button onclick="createAccount()">Create Account</button>
+
+    <div id="transactionSection" style="display: none;">
+      <hr>
+      <h2>Transactions</h2>
+      <label for="depositAmount">Deposit Amount:</label>
+      <input type="number" id="depositAmount" placeholder="Enter deposit amount">
+      <button onclick="deposit()">Deposit</button>
+
+      <label for="withdrawalAmount">Withdrawal Amount:</label>
+      <input type="number" id="withdrawalAmount" placeholder="Enter withdrawal amount">
+      <button onclick="withdraw()">Withdraw</button>
+
+      <div id="balanceDisplay">
+        <h3>Account Balance:</h3>
+        <p id="balanceValue"></p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let customer = {};
+
+    function createAccount() {
+      const customerNameInput = document.getElementById("customerName");
+      const balanceInput = document.getElementById("balance");
+      const transactionSection = document.getElementById("transactionSection");
+
+      const customerName = customerNameInput.value;
+      const initialBalance = parseFloat(balanceInput.value);
+
+      if (!customerName || isNaN(initialBalance) || initialBalance < 0) {
+        alert("Please enter valid values.");
+        return;
+      }
+
+      customer = {
+        name: customerName,
+        balance: initialBalance
+      };
+
+      transactionSection.style.display = "block";
+      updateBalanceDisplay();
+    }
+
+    function deposit() {
+      const depositAmountInput = document.getElementById("depositAmount");
+      const depositAmount = parseFloat(depositAmountInput.value);
+
+      if (!isNaN(depositAmount) && depositAmount >= 0) {
+        customer.balance += depositAmount;
+        updateBalanceDisplay();
+        depositAmountInput.value = "";
+      }
+    }
+
+    function withdraw() {
+      const withdrawalAmountInput = document.getElementById("withdrawalAmount");
+      const withdrawalAmount = parseFloat(withdrawalAmountInput.value);
+
+      if (!isNaN(withdrawalAmount) && withdrawalAmount >= 0 && withdrawalAmount <= customer.balance) {
+        customer.balance -= withdrawalAmount;
+        updateBalanceDisplay();
+        withdrawalAmountInput.value = "";
+      }
+    }
+
+    function updateBalanceDisplay() {
+      const balanceValue = document.getElementById("balanceValue");
+      balanceValue.textContent = `Rs. ${customer.balance.toFixed(2)}`;
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Highest Marks</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+
+    #container {
+      margin-top: 50px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+
+    #result {
+      margin-top: 20px;
+      font-size: 24px;
+    }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <h1>Highest Marks</h1>
+    <label for="marks">Enter marks for five students (comma-separated):</label>
+    <input type="text" id="marks" placeholder="e.g., 85,92,78,95,88">
+
+    <button onclick="findHighestMarks()">Find Highest Marks</button>
+    
+    <div id="result"></div>
+  </div>
+
+  <script>
+    function findHighestMarks() {
+      const marksInput = document.getElementById("marks").value;
+      const marksArray = marksInput.split(",").map(Number); // Convert input to an array of numbers
+
+      if (marksArray.length !== 5) {
+        alert("Please enter marks for all five students.");
+        return;
+      }
+
+      // Use the Math.max method to find the highest marks
+      const highestMarks = Math.max(...marksArray);
+
+      // Display the highest marks to the teacher using the console
+      const resultDiv = document.getElementById("result");
+      resultDiv.textContent = `The highest marks scored by a student in the class: ${highestMarks}`;
+    }
+  </script>
+</body>
+</html>

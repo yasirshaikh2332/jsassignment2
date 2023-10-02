@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vowel Counter</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+
+    #container {
+      margin-top: 50px;
+    }
+
+    label {
+      font-size: 18px;
+    }
+
+    input {
+      padding: 10px;
+      font-size: 16px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+
+    #result {
+      margin-top: 20px;
+      font-size: 24px;
+    }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <h1>Vowel Counter</h1>
+    <label for="name">Enter your name:</label>
+    <input type="text" id="name">
+
+    <button onclick="countVowels()">Count Vowels</button>
+    
+    <div id="result"></div>
+  </div>
+
+  <script>
+    function countVowels() {
+      const nameInput = document.getElementById("name").value.toLowerCase(); // Convert to lowercase for case-insensitivity
+      const vowels = "aeiou";
+      let vowelCount = 0;
+
+      for (let i = 0; i < nameInput.length; i++) {
+        if (vowels.includes(nameInput[i])) {
+          vowelCount++;
+        }
+      }
+
+      // Display the vowel count to the user
+      const resultDiv = document.getElementById("result");
+      resultDiv.textContent = `Number of vowels in the name: ${vowelCount}`;
+    }
+  </script>
+</body>
+</html>
